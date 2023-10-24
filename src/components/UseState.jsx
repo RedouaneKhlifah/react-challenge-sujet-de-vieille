@@ -1,21 +1,27 @@
+import { useState } from "react";
+
 function UseState() {
-  // use state
+  const [count, setCount] = useState(0);
 
   const increment = () => {
-    //  logic
+    setCount(count + 1);
   };
 
   const decrement = () => {
-    // logic
+    setCount(count > 0 ? count - 1 : 0);
   };
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div>
         <h1>Counter</h1>
-        <p>Count: {}</p>
-        <button onClick={increment}>Increment</button>
-        <button onClick={decrement}>Decrement</button>
+        <p>Count: {count}</p>
+        <button className="increment" onClick={increment}>
+          Increment
+        </button>
+        <button className="decrement" onClick={decrement}>
+          Decrement
+        </button>
       </div>
     </div>
   );

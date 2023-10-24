@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function UseRef() {
   const [count, setCount] = useState(0);
   const [sideEffect, setSideEffect] = useState();
+  const countRef = useRef();
 
   const increment = () => {
     setCount(count + 1);
@@ -14,9 +15,7 @@ function UseRef() {
 
   useEffect(() => {
     setSideEffect(count * 2);
-    // ref code here
-
-    // Update the text content of the ref
+    countRef.current.textContent = count; // Update the text content of the ref
   }, [count]);
 
   return (
@@ -27,7 +26,7 @@ function UseRef() {
         <div>
           <h2>useRef</h2>
           <p>
-            Count: <span>ref</span>
+            Count: <span ref={countRef}></span>
           </p>
         </div>
         {/* use effect */}

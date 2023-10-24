@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function UseEffect() {
   const [count, setCount] = useState(0);
+  const [sideEffect, setSideEffect] = useState(0);
 
   // useEffect to update the sideEffect to be equal to count * 2
+  useEffect(() => {
+    setSideEffect(count * 2);
+  }, [count]);
 
-
-  // useEffect code up
   const increment = () => {
     setCount(count + 1);
   };
@@ -21,7 +23,7 @@ function UseEffect() {
         <h1>Counter</h1>
         <div>
           <h1>useEffect</h1>
-          <p>counter * 2 : {}</p>
+          <p>counter * 2 : {sideEffect}</p>
         </div>
         <div>
           <h1>useState</h1>
